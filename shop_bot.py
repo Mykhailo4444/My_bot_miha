@@ -6,7 +6,7 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMar
 from flask import Flask, request, abort
 
 from shop_models import User, Category, Product, Cart, Order
-from config import TOKEN, WEBHOOK_URL
+from config import TOKEN, WEBHOOK_URI
 from utils import inline_kb_from_iterable
 from constants import GREETINGS_1, GREETINGS, START_KB, CATEGORIES, CATEGORY_TAG, CHOOSE_CATEGORY, ADD_TO_CART, \
     PRODUCT_TAG, PRODUCTS_WITH_DISCOUNT, PRODUCTS_DIS, NEWS, HOT_NEWS, CART, SORRY_CART, CART_PRODUCT, CART_KB, \
@@ -18,7 +18,7 @@ bot = TeleBot(TOKEN)
 app = Flask(__name__)
 
 
-@app.route(WEBHOOK_URL, methods=['POST'])
+@app.route(WEBHOOK_URI, methods=['POST'])
 def handle_webhook():
     if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
