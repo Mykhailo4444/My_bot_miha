@@ -238,7 +238,7 @@ def understanding(message):
 
 bot.remove_webhook()
 time.sleep(0.5)
-bot.set_webhook('/https://35.228.171.61/tg', certificate=open('webhook_cert.pem'))
+bot.set_webhook('https://35.228.171.61/tg', certificate=open('webhook_cert.pem'))
 app.run(debug=True)
 
 
