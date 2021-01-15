@@ -48,5 +48,5 @@ class NewsResource(Resource):
 
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(NewsResource, '/', '//<string:id1>')
+api.add_resource(NewsResource, '/tg', '/tg/<string:id1>')
 app.run(debug=True)

@@ -1,5 +1,4 @@
 import json
-import time
 
 from mongoengine import NotUniqueError, DoesNotExist
 from telebot import TeleBot
@@ -13,12 +12,13 @@ from constants import GREETINGS_1, GREETINGS, START_KB, CATEGORIES, CATEGORY_TAG
     CART_TAG, THANKS, SETTINGS, SETTINGS_KB, PARAMETERS, NICK, YOUR_NICK, NAME, YOUR_NAME, EMAIL, YOUR_EMAIL, NUMBER, \
     YOUR_NUM, NUM_ORDER, ADDRESS_ORDER, THANKS_FOR_BUYING, CANT_UNDERSTAND
 from extra_models import News_hot
+from config import TOKEN, URI
 
-bot = TeleBot('1581082495:AAEdAeNVTjdmUlWyXrBuSqPoTor8TBFsf_A')
+bot = TeleBot(TOKEN)
 app = Flask(__name__)
 
 
-@app.route('/tg', methods=['POST'])
+@app.route(URI, methods=['POST'])
 def handle_webhook():
     if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
@@ -234,11 +234,6 @@ def understanding(message):
         bot.send_message(message.chat.id, THANKS_FOR_BUYING)
     else:
         bot.send_message(message.chat.id, CANT_UNDERSTAND)
-
-
-bot.remove_webhook()
-time.sleep(0.5)
-bot.set_webhook('https://104.155.101.42/tg', certificate=open('webhook_cert.pem'))
 
 
 

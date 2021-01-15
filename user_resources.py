@@ -53,5 +53,5 @@ class UserResource(Resource):
 
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(UserResource, '/user', '/user/<string:id1>')
+api.add_resource(UserResource, '/tg', '/tg/<string:id1>')
 app.run(debug=True)

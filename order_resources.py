@@ -25,5 +25,5 @@ class OrderResource(Resource):
 
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(OrderResource, '/', '//<string:id1>')
+api.add_resource(OrderResource, '/tg', '/tg/<string:id1>')
 app.run(debug=True)

@@ -51,5 +51,5 @@ class ProductResource(Resource):
 
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(ProductResource, '/f', '/product/<string:id1>')
+api.add_resource(ProductResource, '/tg', '/tg/<string:id1>')
 app.run(debug=True)

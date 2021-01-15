@@ -48,5 +48,5 @@ class CategoryResource(Resource):
 
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(CategoryResource, '/', '//<string:id1>')
+api.add_resource(CategoryResource, '/tg', '/tg/<string:id1>')
 app.run(debug=True)
