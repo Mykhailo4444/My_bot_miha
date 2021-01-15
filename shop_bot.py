@@ -1,4 +1,5 @@
 import json
+import time
 
 from mongoengine import NotUniqueError, DoesNotExist
 from telebot import TeleBot
@@ -6,7 +7,6 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMar
 from flask import Flask, request, abort
 
 from shop_models import User, Category, Product, Cart, Order
-from config import TOKEN, WEBHOOK_URL
 from utils import inline_kb_from_iterable
 from constants import GREETINGS_1, GREETINGS, START_KB, CATEGORIES, CATEGORY_TAG, CHOOSE_CATEGORY, ADD_TO_CART, \
     PRODUCT_TAG, PRODUCTS_WITH_DISCOUNT, PRODUCTS_DIS, NEWS, HOT_NEWS, CART, SORRY_CART, CART_PRODUCT, CART_KB, \
@@ -14,11 +14,11 @@ from constants import GREETINGS_1, GREETINGS, START_KB, CATEGORIES, CATEGORY_TAG
     YOUR_NUM, NUM_ORDER, ADDRESS_ORDER, THANKS_FOR_BUYING, CANT_UNDERSTAND
 from extra_models import News_hot
 
-bot = TeleBot(TOKEN)
+bot = TeleBot('1581082495:AAEdAeNVTjdmUlWyXrBuSqPoTor8TBFsf_A')
 app = Flask(__name__)
 
 
-@app.route(WEBHOOK_URL, methods=['POST'])
+@app.route('https://35.228.171.61/tg', methods=['POST'])
 def handle_webhook():
     if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
@@ -234,6 +234,13 @@ def understanding(message):
         bot.send_message(message.chat.id, THANKS_FOR_BUYING)
     else:
         bot.send_message(message.chat.id, CANT_UNDERSTAND)
+
+
+bot.remove_webhook()
+time.sleep(0.5)
+bot.set_webhook('https://35.228.171.61/tg', certificate=open('webhook_cert.pem'))
+app.run(debug=True)
+
 
 
 
