@@ -1,6 +1,6 @@
 from flask_restful import Resource, Api
 from flask import request
-from extra_models import News_hot
+from My_tg_bot.extra_models import News_hot
 from marshmallow.exceptions import ValidationError
 from marshmallow import Schema
 from marshmallow import fields

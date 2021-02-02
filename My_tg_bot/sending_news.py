@@ -1,9 +1,9 @@
 import time
-from shop_models import User
+from My_tg_bot.shop_models import User
 from telebot.apihelper import ApiException
 from threading import Thread
 from telebot import TeleBot
-from config import TOKEN
+from My_tg_bot.config import TOKEN
 bot = TeleBot(TOKEN)
 
 

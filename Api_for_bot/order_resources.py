@@ -1,5 +1,5 @@
 from flask_restful import Resource, Api
-from shop_models import Order
+from My_tg_bot.shop_models import Order
 from marshmallow import Schema
 from marshmallow.validate import Length
 from marshmallow import fields

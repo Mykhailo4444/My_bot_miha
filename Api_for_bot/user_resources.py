@@ -1,6 +1,6 @@
 from flask_restful import Resource, Api
 from flask import request
-from shop_models import User
+from My_tg_bot.shop_models import User
 from marshmallow.exceptions import ValidationError
 from marshmallow import Schema
 from marshmallow import fields
@@ -22,7 +22,7 @@ class UserResource(Resource):
 
     def get(self, id1=None):
         if id1:
-            return UserSchemaRead().dump(User.objects.get(id=id1))
+            return UserSchemaRead().dump(User.objects.get(telegram_id=id1))
         else:
             users = User.objects()
             return UserSchemaRead().dump(users, many=True)
@@ -41,12 +41,12 @@ class UserResource(Resource):
         except ValidationError as e:
             return {'text': str(e)}
 
-        user = User.objects.get(id=id1)
+        user = User.objects.get(telegram_id=id1)
         user.update(**request.json)
         return UserSchemaRead().dump(user)
 
     def delete(self, id1=None):
-        user = User.objects.get(id=id1)
+        user = User.objects.get(telegram_id=id1)
         user.delete()
         return {'text': 'was deleted'}
 

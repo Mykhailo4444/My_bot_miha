@@ -5,14 +5,11 @@ from telebot import TeleBot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from flask import Flask, request, abort
 
-from shop_models import User, Category, Product, Cart, Order
-from utils import inline_kb_from_iterable
-from constants import GREETINGS_1, GREETINGS, START_KB, CATEGORIES, CATEGORY_TAG, CHOOSE_CATEGORY, ADD_TO_CART, \
-    PRODUCT_TAG, PRODUCTS_WITH_DISCOUNT, PRODUCTS_DIS, NEWS, HOT_NEWS, CART, SORRY_CART, CART_PRODUCT, CART_KB, \
-    CART_TAG, THANKS, SETTINGS, SETTINGS_KB, PARAMETERS, NICK, YOUR_NICK, NAME, YOUR_NAME, EMAIL, YOUR_EMAIL, NUMBER, \
-    YOUR_NUM, NUM_ORDER, ADDRESS_ORDER, THANKS_FOR_BUYING, CANT_UNDERSTAND
-from extra_models import News_hot
-from config import TOKEN, URI
+from My_tg_bot.shop_models import *
+from My_tg_bot.utils import inline_kb_from_iterable
+from My_tg_bot.constants import *
+from My_tg_bot.extra_models import News_hot
+from My_tg_bot.config import TOKEN, URI
 
 bot = TeleBot(TOKEN)
 app = Flask(__name__)

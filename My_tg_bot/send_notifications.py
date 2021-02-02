@@ -1,6 +1,6 @@
-from sending_news import Sender
-from shop_models import User
-from extra_models import News_hot
+from My_tg_bot.sending_news import Sender
+from My_tg_bot.shop_models import User
+from My_tg_bot.extra_models import News_hot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 count_news = News_hot.objects().count()

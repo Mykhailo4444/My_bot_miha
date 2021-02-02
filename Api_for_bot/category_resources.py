@@ -1,6 +1,6 @@
 from flask_restful import Resource, Api
 from flask import request
-from shop_models import Category
+from My_tg_bot.shop_models import Category
 from marshmallow.exceptions import ValidationError
 from marshmallow import Schema
 from marshmallow import fields
